@@ -1,0 +1,28 @@
+import shutil
+import zipfile
+import os
+
+downloads = os.listdir('D:/Downloads/')
+
+i = 0
+
+for elm in downloads:
+    downloads[i] = 'D:/Downloads/'+ elm
+    i += 1
+    
+i = 0
+
+for n in downloads:
+    a = os.path.splitext(downloads[i])
+
+    if a[1] == '.zip':
+        shutil.move(downloads[i], 'zips_for_attribution/')
+    i += 1
+    
+decompress = os.listdir('zips_for_attribution/') 
+
+for z in decompress: 
+    folder_a = zipfile.ZipFile('zips_for_attribution/' + z,'r')
+    folder_a.extractall('folders_for_attribution/')
+    folder_a.close()
+    os.remove('zips_for_attribution/' + z)
