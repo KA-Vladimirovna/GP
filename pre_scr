@@ -25,4 +25,16 @@ for z in decompress:
     folder_a = zipfile.ZipFile('zips_for_attribution/' + z,'r')
     folder_a.extractall('folders_for_attribution/')
     folder_a.close()
-    os.remove('zips_for_attribution/' + z)
+#    os.remove('zips_for_attribution/' + z)
+    
+path = r'folders_for_attribution/' 
+
+for filefolder in os.listdir(path): 
+    folder_path = path +'/'+filefolder
+    print filefolder
+    
+    contdir = [] 
+    for i in os.walk(folder_path): 
+        contdir.append(i)
+
+print contdir
