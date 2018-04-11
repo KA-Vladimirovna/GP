@@ -51,3 +51,9 @@ for filefolder in os.listdir(path):
             if file_extension != '.py': 
                     print str(file_extension) + '   NO PY'
                     os.remove(folder_path + '/' + file) 
+                    
+for filefolder in os.listdir(path): 
+    shutil.move(path + '/' + filefolder, 'authors')
+    print str(filefolder) + ' - this is dir! '
+
+    print ' '
