@@ -38,6 +38,7 @@ for filefolder in os.listdir(path):
     
     for root, dirs, files in os.walk(folder_path):
         for file in files:
+            file_extension = os.path.splitext(file)[1]
             if file.endswith(".py"):
                 print file
                 if os.path.exists(folder_path + '/' + file) is False:
@@ -46,3 +47,7 @@ for filefolder in os.listdir(path):
             for dir in dirs:
                 dirdel = os.path.join(root, dir)
                 shutil.rmtree(dirdel)
+            
+            if file_extension != '.py': 
+                    print str(file_extension) + '   NO PY'
+                    os.remove(folder_path + '/' + file) 
