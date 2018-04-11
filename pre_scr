@@ -33,8 +33,9 @@ for filefolder in os.listdir(path):
     folder_path = path +'/'+filefolder
     print filefolder
     
-    contdir = [] 
-    for i in os.walk(folder_path): 
-        contdir.append(i)
-
-print contdir
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".py"):
+                print file
+                if os.path.exists(folder_path + '/' + file) is False:
+                    shutil.move(os.path.join(root,file), folder_path)
